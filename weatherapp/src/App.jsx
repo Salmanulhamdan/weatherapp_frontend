@@ -17,26 +17,35 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchData(location);
-    console.log(data);
   };
 
   return (
     <main>
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center", // Center items vertically
+            backgroundImage: "url('/weather.jpg')", // Background image
+            backgroundSize: "cover",  // Cover the entire box with the background image
+            gap: "30px",
+            backgroundPosition: "center", // Center the background image
+            padding: "150px",       // Add padding around the box
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Add a shadow
+            borderRadius: "8px",   // Add border radius
+          }}
       >
         <SearchBar
           value={location}
           handleChange={(e) => setLocation(e.target.value)}
           handleSubmit={handleSubmit}
         />
-      </Box>
+       
       <ThemeProvider theme={theme}>
         {data.main && <CurrentWeatherContainer weather={data} />}
       </ThemeProvider>
+      </Box>
     </main>
   );
 }
